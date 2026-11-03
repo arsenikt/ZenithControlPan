@@ -15,6 +15,8 @@ Secure Electron operator console for the Zenith Apps smart-contract suite on **Z
 - export/import deployment manifests and sync `ZenithDapps` directly;
 - package a Windows NSIS installer.
 
+The complete operator interface can be switched between English and Russian from the top bar. English is the default, and the explicit choice is stored locally.
+
 ## Run
 
 Requires Node.js 22+.

@@ -72,6 +72,9 @@ svg { display: block; }
 .topbar h1 { margin: 5px 0 2px; font-size: 22px; line-height: 1; letter-spacing: -.03em; }
 .topbar p { margin: 0; color: #64717c; font-size: 8px; }
 .topbar-actions { display: flex; align-items: center; gap: 9px; }
+.language-switch { height: 36px; padding: 3px; display: flex; align-items: center; border: 1px solid var(--line); background: rgba(255,255,255,.016); }
+.language-switch button { width: 29px; height: 28px; padding: 0; border: 0; background: transparent; color: #66737e; font-size: 7px; letter-spacing: .08em; font-weight: 850; }
+.language-switch button.is-active { color: #11160e; background: var(--lime); }
 .rpc-chip { height: 44px; padding: 0 13px; border: 1px solid var(--line); background: rgba(255,255,255,.016); display: flex; align-items: center; gap: 9px; }
 .rpc-chip > svg { width: 14px; color: var(--red); }
 .rpc-chip.is-online > svg { color: var(--teal); }
@@ -545,6 +548,8 @@ svg { display: block; }
 
 @media (max-width: 1250px) {
   .app-shell { grid-template-columns: 210px 1fr; }
+  .rpc-chip { display: none; }
+  .deployer-chip { min-width: 178px; }
   .deployment-grid { grid-template-columns: repeat(2,1fr); }
   .quick-actions { grid-template-columns: repeat(2,1fr); }
   .overview-grid { grid-template-columns: 1fr; }
