@@ -96,8 +96,10 @@ export function LocaleProvider({ children, pairs }: { children: ReactNode; pairs
     const localizeTree = (root: Node) => {
       if (root instanceof Text) localizeText(root)
       const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT)
+      const textNodes: Text[] = []
       let text = walker.nextNode()
-      while (text) { localizeText(text as Text); text = walker.nextNode() }
+      while (text) { textNodes.push(text as Text); text = walker.nextNode() }
+      for (const node of textNodes) localizeText(node)
       if (root instanceof Element) {
         for (const attribute of ['aria-label', 'title', 'placeholder', 'alt']) localizeAttribute(root, attribute)
         if (root instanceof HTMLInputElement || root instanceof HTMLTextAreaElement) localizeValue(root)
