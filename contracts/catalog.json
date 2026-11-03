@@ -1,0 +1,15 @@
+[
+  { "key": "registry", "contractName": "ZenithSuiteRegistry", "title": "Suite Registry", "category": "infrastructure", "constructor": [] },
+  { "key": "demoToken", "contractName": "DemoUSDC", "title": "Demo USDC", "category": "infrastructure", "constructor": [] },
+  { "key": "zenlink", "contractName": "EscrowVault", "title": "ZenLink", "category": "payments", "constructor": [] },
+  { "key": "pactfi", "contractName": "HabitPool", "title": "PactFi", "category": "payments", "constructor": [] },
+  { "key": "splitzen", "contractName": "GroupTab", "title": "SplitZen", "category": "payments", "constructor": [] },
+  { "key": "microretail", "contractName": "MockTBondVault", "title": "MicroRetail RWA", "category": "streaming", "constructor": ["demoToken", true] },
+  { "key": "substream", "contractName": "SubStream", "title": "SubStream", "category": "streaming", "constructor": [] },
+  { "key": "safedeal", "contractName": "SafeDealP2P", "title": "SafeDeal P2P", "category": "payments", "constructor": [] },
+  { "key": "priceOracle", "contractName": "DemoPriceOracle", "title": "Demo BTC/USD Oracle", "category": "infrastructure", "constructor": [6500000000000] },
+  { "key": "flashpredict", "contractName": "FlashPredict", "title": "FlashPredict", "category": "streaming", "constructor": ["demoToken", "priceOracle", 120] },
+  { "key": "fairtix", "contractName": "FairTix", "title": "FairTix", "category": "assets", "constructor": [] },
+  { "key": "deadman", "contractName": "DeadMansVault", "title": "DeadMan's Vault", "category": "assets", "constructor": [] },
+  { "key": "gumroad", "contractName": "DigitalShop", "title": "OnChain Gumroad", "category": "assets", "constructor": [] }
+]
