@@ -144,7 +144,11 @@ async function createWindow() {
   mainWindow = window;
   window.webContents.setWindowOpenHandler(() => ({ action: 'deny' }));
   window.webContents.on('will-navigate', (event, url) => { if (url !== window.webContents.getURL()) event.preventDefault(); });
-  window.once('ready-to-show', () => { if (!window.isDestroyed()) window.show(); });
+  window.once('ready-to-show', () => {
+    if (window.isDestroyed()) return;
+    window.maximize();
+    window.show();
+  });
   window.on('closed', () => { if (mainWindow === window) mainWindow = undefined; });
   if (isDevelopment) await window.loadURL(process.env.VITE_DEV_SERVER_URL);
   else await window.loadFile(path.join(__dirname, '..', 'dist', 'index.html'));
