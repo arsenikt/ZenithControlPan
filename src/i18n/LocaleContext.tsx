@@ -1,4 +1,4 @@
-﻿import { createContext, useContext, useLayoutEffect, useMemo, useState, type ReactNode } from 'react'
+import { createContext, useContext, useLayoutEffect, useMemo, useState, type ReactNode } from 'react'
 
 export type Locale = 'en' | 'ru'
 export type TranslationPair = readonly [english: string, russian: string]
@@ -29,6 +29,9 @@ export function createTranslator(pairs: readonly TranslationPair[]) {
     if (!clean) return source
     const exact = locale === 'en' ? toEnglish.get(clean) : toRussian.get(clean)
     if (exact) return preserveWhitespace(source, exact)
+
+    const containsCyrillic = /[А-Яа-яЁё]/.test(clean)
+    if ((locale === 'en' && !containsCyrillic) || (locale === 'ru' && containsCyrillic)) return source
 
     let translated = clean
     const replacements = locale === 'en'
@@ -143,10 +146,9 @@ export function useLocale(): LocaleContextValue {
 export function LanguageSwitch() {
   const { locale, setLocale } = useLocale()
   return (
-    <div className="language-switch" role="group" aria-label="Language / РЇР·С‹Рє" data-no-i18n>
+    <div className="language-switch" role="group" aria-label="Language / Язык" data-no-i18n>
       <button className={locale === 'en' ? 'is-active' : ''} type="button" onClick={() => setLocale('en')} aria-pressed={locale === 'en'}>EN</button>
       <button className={locale === 'ru' ? 'is-active' : ''} type="button" onClick={() => setLocale('ru')} aria-pressed={locale === 'ru'}>RU</button>
     </div>
   )
 }
-
